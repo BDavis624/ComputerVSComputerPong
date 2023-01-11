@@ -9,11 +9,9 @@ screen.setup(width=1068, height=600)
 
 #I'll now create a left paddle.
 turtle.addshape("gondor3.gif")
-#turtle.shape("gondor2.gif")
 paddle1 = turtle.Turtle()
 paddle1.speed(0)
 paddle1.shape("gondor3.gif")
-#paddle1.color("blue")
 paddle1.shapesize(stretch_wid=6, stretch_len=2)
 paddle1.penup()
 paddle1.goto(-500, 0)
@@ -23,22 +21,20 @@ turtle.addshape("sauron3.gif")
 paddle2 = turtle.Turtle()
 paddle2.speed(0)
 paddle2.shape("sauron3.gif")
-#paddle2.color("red")
 paddle2.shapesize(stretch_wid=5, stretch_len=1)
 paddle2.penup()
 paddle2.goto(500, 0)
 
 #I'm attempting to create a ball here.
 turtle.addshape("onering4.gif")
-ball = turtle.Turtle()
-ball.speed(0)
-ball.shape("onering4.gif")
-#ball.color("yellow")
-ball.shapesize(stretch_wid=1,stretch_len=1)
-ball.penup()
-ball.goto(0,0)
-ball.dx = 2
-ball.dy = -2
+ring = turtle.Turtle()
+ring.speed(0)
+ring.shape("onering4.gif")
+ring.shapesize(stretch_wid=1,stretch_len=1)
+ring.penup()
+ring.goto(0,0)
+ring.dx = 2
+ring.dy = -2
 
 def movePaddle1Up():
     y = paddle1.ycor() #Getting the current y-coordinated of the left paddle
@@ -61,16 +57,16 @@ def movePaddle2Down():
    paddle2.sety(y)
 
 #Trying to create some rudimentary computer control. I found some resources on YouTube that were helpful for this.
-if paddle1.ycor() < ball.ycor() and abs(paddle1.ycor() - ball.ycor()) > 10:
+if paddle1.ycor() < ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
     movePaddle1Up()
 
-elif paddle1.ycor() > ball.ycor() and abs(paddle1.ycor() - ball.ycor()) > 10:
+elif paddle1.ycor() > ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
     movePaddle1Down()
 
-if paddle2.ycor() < ball.ycor() and abs(paddle2.ycor() - ball.ycor()) > 10:
+if paddle2.ycor() < ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
     movePaddle2Up()
 
-elif paddle2.ycor() > ball.ycor() and abs(paddle2.ycor() - ball.ycor()) > 10:
+elif paddle2.ycor() > ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
     movePaddle2Down()
 
 #Setting up the actual game.
@@ -78,32 +74,32 @@ while True:
     screen.update()
 
     #Updating ball coordinates.
-    ball.setx(ball.xcor()+ball.dx)
-    ball.sety(ball.ycor()+ball.dy)   
+    ring.setx(ring.xcor()+ring.dx)
+    ring.sety(ring.ycor()+ring.dy)   
 
-    if paddle1.ycor() < ball.ycor() and abs(paddle1.ycor() - ball.ycor()) > 10:
+    if paddle1.ycor() < ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
         movePaddle1Up()
 
-    elif paddle1.ycor() > ball.ycor() and abs(paddle1.ycor() - ball.ycor()) > 10:
+    elif paddle1.ycor() > ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
         movePaddle1Down()
 
-    if paddle2.ycor() < ball.ycor() and abs(paddle2.ycor() - ball.ycor()) > 10:
+    if paddle2.ycor() < ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
         movePaddle2Up()
 
-    elif paddle2.ycor() > ball.ycor() and abs(paddle2.ycor() - ball.ycor()) > 10:
+    elif paddle2.ycor() > ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
         movePaddle2Down()
 
 #I had to find a good tutorial for this next bit, where I get the ball to bounce.
-    if ball.ycor() > 280:
-     ball.sety(280)
-     ball.dy *= -1
+    if ring.ycor() > 280:
+     ring.sety(280)
+     ring.dy *= -1
 
-    if ball.ycor() < -280:
-        ball.sety(-280)
-        ball.dy *= -1
+    if ring.ycor() < -280:
+        ring.sety(-280)
+        ring.dy *= -1
 
-    if (ball.xcor() < -460 and ball.xcor() > -470) and (paddle1.ycor() + 50 > ball.ycor() > paddle1.ycor() - 50):
-         ball.dx *=-1
+    if (ring.xcor() < -460 and ring.xcor() > -470) and (paddle1.ycor() + 50 > ring.ycor() > paddle1.ycor() - 50):
+         ring.dx *=-1
 
-    if (ball.xcor() > 460 and ball.xcor() < 470) and (paddle2.ycor() + 50 > ball.ycor() > paddle2.ycor() - 50):
-        ball.dx *=-1
+    if (ring.xcor() > 460 and ring.xcor() < 470) and (paddle2.ycor() + 50 > ring.ycor() > paddle2.ycor() - 50):
+        ring.dx *=-1
