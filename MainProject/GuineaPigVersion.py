@@ -9,21 +9,21 @@ screen.setup(width=1068, height=600)
 
 #I'll now create a left paddle.
 turtle.addshape("gondor3.gif")
-paddle1 = turtle.Turtle()
-paddle1.speed(0)
-paddle1.shape("gondor3.gif")
-paddle1.shapesize(stretch_wid=6, stretch_len=2)
-paddle1.penup()
-paddle1.goto(-500, 0)
+Gondor = turtle.Turtle()
+Gondor.speed(0)
+Gondor.shape("gondor3.gif")
+Gondor.shapesize(stretch_wid=6, stretch_len=2)
+Gondor.penup()
+Gondor.goto(-500, 0)
 
 #And now for the right paddle.
 turtle.addshape("sauron3.gif")
-paddle2 = turtle.Turtle()
-paddle2.speed(0)
-paddle2.shape("sauron3.gif")
-paddle2.shapesize(stretch_wid=5, stretch_len=1)
-paddle2.penup()
-paddle2.goto(500, 0)
+Mordor = turtle.Turtle()
+Mordor.speed(0)
+Mordor.shape("sauron3.gif")
+Mordor.shapesize(stretch_wid=5, stretch_len=1)
+Mordor.penup()
+Mordor.goto(500, 0)
 
 #I'm attempting to create a ball here.
 turtle.addshape("onering4.gif")
@@ -36,38 +36,38 @@ ring.goto(0,0)
 ring.dx = 2
 ring.dy = -2
 
-def movePaddle1Up():
-    y = paddle1.ycor() #Getting the current y-coordinated of the left paddle
+def moveGondorUp():
+    y = Gondor.ycor() #Getting the current y-coordinated of the left paddle
     y += 15
-    paddle1.sety(y) #Updating the y-coordinated of the paddle
+    Gondor.sety(y) #Updating the y-coordinated of the paddle
 
-def movePaddle1Down():
-    y = paddle1.ycor()
+def moveGondorDown():
+    y = Gondor.ycor()
     y -= 15
-    paddle1.sety(y)
+    Gondor.sety(y)
 
-def movePaddle2Up():
-    y = paddle2.ycor()
+def moveMordorUp():
+    y = Mordor.ycor()
     y += 15
-    paddle2.sety(y)
+    Mordor.sety(y)
 
-def movePaddle2Down():
-   y = paddle2.ycor()
+def moveMordorDown():
+   y = Mordor.ycor()
    y -= 15
-   paddle2.sety(y)
+   Mordor.sety(y)
 
 #Trying to create some rudimentary computer control. I found some resources on YouTube that were helpful for this.
-if paddle1.ycor() < ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
-    movePaddle1Up()
+if Gondor.ycor() < ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
+    moveGondorUp()
 
-elif paddle1.ycor() > ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
-    movePaddle1Down()
+elif Gondor.ycor() > ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
+    moveGondorDown()
 
-if paddle2.ycor() < ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
-    movePaddle2Up()
+if Mordor.ycor() < ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
+    moveMordorUp()
 
-elif paddle2.ycor() > ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
-    movePaddle2Down()
+elif Mordor.ycor() > ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
+    moveMordorDown()
 
 #Setting up the actual game.
 while True:
@@ -77,17 +77,17 @@ while True:
     ring.setx(ring.xcor()+ring.dx)
     ring.sety(ring.ycor()+ring.dy)   
 
-    if paddle1.ycor() < ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
-        movePaddle1Up()
+    if Gondor.ycor() < ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
+        moveGondorUp()
 
-    elif paddle1.ycor() > ring.ycor() and abs(paddle1.ycor() - ring.ycor()) > 10:
-        movePaddle1Down()
+    elif Gondor.ycor() > ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
+        moveGondorDown()
 
-    if paddle2.ycor() < ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
-        movePaddle2Up()
+    if Mordor.ycor() < ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
+        moveMordorUp()
 
-    elif paddle2.ycor() > ring.ycor() and abs(paddle2.ycor() - ring.ycor()) > 10:
-        movePaddle2Down()
+    elif Mordor.ycor() > ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
+        moveMordorDown()
 
 #I had to find a good tutorial for this next bit, where I get the ball to bounce.
     if ring.ycor() > 280:
@@ -98,8 +98,8 @@ while True:
         ring.sety(-280)
         ring.dy *= -1
 
-    if (ring.xcor() < -460 and ring.xcor() > -470) and (paddle1.ycor() + 50 > ring.ycor() > paddle1.ycor() - 50):
+    if (ring.xcor() < -460 and ring.xcor() > -470) and (Gondor.ycor() + 50 > ring.ycor() > Gondor.ycor() - 50):
          ring.dx *=-1
 
-    if (ring.xcor() > 460 and ring.xcor() < 470) and (paddle2.ycor() + 50 > ring.ycor() > paddle2.ycor() - 50):
+    if (ring.xcor() > 460 and ring.xcor() < 470) and (Mordor.ycor() + 50 > ring.ycor() > Mordor.ycor() - 50):
         ring.dx *=-1
