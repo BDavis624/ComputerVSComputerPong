@@ -25,7 +25,7 @@ Mordor.shapesize(stretch_wid=5, stretch_len=1)
 Mordor.penup()
 Mordor.goto(500, 0)
 
-#I'm attempting to create a ball here.
+#Creating a ball object.
 turtle.addshape("onering4.gif")
 ring = turtle.Turtle()
 ring.speed(0)
@@ -56,19 +56,6 @@ def moveMordorDown():
    y -= 15
    Mordor.sety(y)
 
-#Trying to create some rudimentary computer control. I found some resources on YouTube that were helpful for this.
-if Gondor.ycor() < ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
-    moveGondorUp()
-
-elif Gondor.ycor() > ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
-    moveGondorDown()
-
-if Mordor.ycor() < ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
-    moveMordorUp()
-
-elif Mordor.ycor() > ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
-    moveMordorDown()
-
 #Setting up the actual game.
 while True:
     screen.update()
@@ -77,6 +64,7 @@ while True:
     ring.setx(ring.xcor()+ring.dx)
     ring.sety(ring.ycor()+ring.dy)   
 
+#Trying to create some rudimentary computer control. I used a tutorial from TokyoEdTech on Youtube for this.
     if Gondor.ycor() < ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
         moveGondorUp()
 
@@ -89,7 +77,7 @@ while True:
     elif Mordor.ycor() > ring.ycor() and abs(Mordor.ycor() - ring.ycor()) > 10:
         moveMordorDown()
 
-#I had to find a good tutorial for this next bit, where I get the ball to bounce.
+#This bit is also based on the geeksforgeeks tutorial from earlier. I have made some changes to the original.
     if ring.ycor() > 280:
      ring.sety(280)
      ring.dy *= -1
