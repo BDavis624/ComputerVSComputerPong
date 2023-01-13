@@ -38,22 +38,22 @@ ring.dy = -2
 
 def moveGondorUp():
     y = Gondor.ycor() #Getting the current y-coordinated of the left paddle
-    y += 15
+    y += 5
     Gondor.sety(y) #Updating the y-coordinated of the paddle
 
 def moveGondorDown():
     y = Gondor.ycor()
-    y -= 15
+    y -= 5
     Gondor.sety(y)
 
 def moveMordorUp():
     y = Mordor.ycor()
-    y += 15
+    y += 5
     Mordor.sety(y)
 
 def moveMordorDown():
    y = Mordor.ycor()
-   y -= 15
+   y -= 5
    Mordor.sety(y)
 
 #Setting up the actual game.
