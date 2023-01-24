@@ -62,7 +62,7 @@ while True:
 
     #Updating ball coordinates.
     ring.setx(ring.xcor()+ring.dx)
-    ring.sety(ring.ycor()+ring.dy)   
+    ring.sety(ring.ycor()-ring.dy) 
 
 #Trying to create some rudimentary computer control. I used a tutorial from TokyoEdTech on Youtube for this.
     if Gondor.ycor() < ring.ycor() and abs(Gondor.ycor() - ring.ycor()) > 10:
